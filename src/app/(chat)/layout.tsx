@@ -1,12 +1,19 @@
 // src/app/(chat)/layout.tsx
-import { api } from "~/lib/trpc/server";
+
+// Corrected to import 'api', not 'serverApi'
+import { api } from "~/lib/trpc/server"; 
+
 import ChatSidebar from "~/components/chat/ChatSidebar";
+
+// This line tells Next.js to always render this page dynamically
+export const dynamic = 'force-dynamic';
 
 export default async function ChatLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Corrected to use 'api'
   const chatSessions = await api.chat.getChatSessions.query();
 
   return (
